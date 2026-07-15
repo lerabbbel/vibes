@@ -63,6 +63,7 @@ h1 {
 
 
 .message {
+
     font-family: "Space Grotesk", sans-serif;
 
     margin-top: 20px;
@@ -75,25 +76,21 @@ h1 {
 
     transform: translateY(20px);
 
-    height: 0;
-    overflow: hidden;
-
     transition: 
         opacity 0.7s ease,
-        transform 0.7s ease,
-        height 0.7s ease;
+        transform 0.7s ease;
 }
 
 
 .message.show {
+
     opacity: 1;
 
     transform: translateY(0);
 
-    height: auto;
-
-    cursor: default;
 }
+
+
 
 
 .hint {
