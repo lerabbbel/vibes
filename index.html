@@ -1,29 +1,42 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!-- MY FIRST PET PROJECT ✨
 
+Название:
+Have a nice day
 
+Что умеет сайт:
+1. Показывает заголовок
+2. По первому клику открывает сообщение
+3. По второму клику запускает анимацию
+4. Показывает финальное пожелание
+5. Адаптирован под мобильные устройства
 
+Автор:
+Lera Bbbel -->
+
+<!DOCTYPE html><html lang="ru">
 <head>
+    <!-- Подключение шрифтов Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Space+Grotesk:wght@500;700&family=Cormorant+Garamond:wght@700&family=Manrope:wght@400;500;700&family=Comfortaa:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Настройки страницы -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>have a nice day</title>
+    
+    <style>
 
-
-<title>have a nice day</title>
-
-<style>
-
-* {
+    /* Базовые настройки страницы */
+    * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
-
-body {
+    /* Основные стили  страницы */
+    body {
     min-height: 100vh;
 
     display: flex;
@@ -39,25 +52,19 @@ body {
 }
 
 
-
-
-
-.container {
+    /* Центральный контейнер */
+    .container {
     text-align: center;
 }
 
 
+
 h1 {
     font-family: "Space Grotesk", sans-serif;
-
     font-size: 100px;
-
     font-weight: 700;
-
     letter-spacing: -0.05em;
-
     cursor: pointer;
-
     animation: appear 1s ease;
 }
 
