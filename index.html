@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Space+Grotesk:wght@500;700&family=Cormorant+Garamond:wght@700&family=Manrope:wght@400;500;700&family=Comfortaa:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<title>have a nice day</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #8E8A41;
+    color: #FDDAD4;
+
+    font-family: "Inter", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+
+
+
+.container {
+    text-align: center;
+}
+
+
+h1 {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 100px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.05em;
+
+    cursor: pointer;
+
+    animation: appear 1s ease;
+}
+
+
+.message {
+    font-family: "Space Grotesk", sans-serif;
+
+    margin-top: 20px;
+
+    font-size: 1.5rem;
+
+    cursor: default;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    height: 0;
+    overflow: hidden;
+
+    transition: 
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        height 0.7s ease;
+}
+
+
+.message.show {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    height: auto;
+
+    cursor: default;
+}
+
+
+.hint {
+    font-family: "Space Grotesk", sans-serif;    
+    
+    margin-top: 0px;
+
+    font-size: 15px;
+
+    opacity: 0.5;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.hint:hover {
+    opacity: 1;
+}
+
+
+.emoji {
+    position: absolute;
+
+    font-size: 50px;
+
+    animation: fly 2s ease-out forwards;
+
+    pointer-events: none;
+}
+
+
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes fly {
+
+    from {
+        opacity: 1;
+        transform: translate(0,0) scale(1);
+    }
+
+
+    to {
+        opacity: 0;
+        transform: translate(var(--x),var(--y)) scale(2);
+    }
+
+
+    @keyframes appearCenter {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateX(-50%) translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateX(-50%) translateY(0);
+
+    }
+
+}
+}
+
+.final-message {
+    font-family: "Inter", sans-serif;
+
+    margin-top: 10px;
+
+    font-size: 1.5rem;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition: 1s ease;
+}
+
+
+.final-message.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+
+.sun {
+
+    position: absolute;
+
+    width: 100px;
+
+    top: 25%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+
+}
+
+
+.buddha {
+
+    position: absolute;
+
+    width: 100px;
+
+    bottom: 40px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+
+}
+
+
+.top-left {
+    position: absolute;
+}
+
+
+/* первая картинка */
+.img1 {
+    width: 200px;
+
+    top: 40px;
+    left: 40px;
+}
+
+
+/* вторая картинка */
+.img2 {
+    width: 150px;
+
+    top: 220px;
+    left: 170px;
+}
+
+
+.bottom-right {
+    position: absolute;
+}
+
+
+/* 3 картинка */
+.img3 {
+    
+    width: 150px;
+
+    bottom: 350px;
+
+    right: 10px;
+     z-index: 3;
+}
+
+
+/* 4 картинка */
+.img4 {
+    
+    width: 250px;
+
+    bottom: 10px;
+
+    right: 10px;
+     z-index: 1;
+}
+
+/* 5 картинка */
+.img5 {
+    
+    width: 200px;
+
+    bottom: 10px;
+
+    right: 100px;
+     z-index: 3;
+}
+
+/* ---------- iPhone ---------- */
+
+/* =========================
+   iPhone
+========================= */
+
+@media (max-width: 768px) {
+
+    body {
+
+        display: block;
+
+        min-height: auto;
+
+        padding: 60px 0 250px;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+    }
+
+
+    .container {
+
+        position: relative;
+
+        z-index: 10;
+
+        width: 90%;
+
+        margin: 0 auto;
+
+        padding-top: 260px;
+
+    }
+
+
+    h1 {
+
+        font-size: 58px;
+
+        line-height: 1;
+
+    }
+
+
+    .message {
+
+        font-size: 22px;
+
+        margin-top: 15px;
+
+    }
+
+
+    .hint {
+
+        font-size: 16px;
+
+        margin-top: 8px;
+
+    }
+
+
+    .final-message {
+
+        font-size: 22px;
+
+    }
+
+
+    /* ---------- левый верх ---------- */
+
+    .img1 {
+
+        width: 150px;
+
+        top: 20px;
+
+        left: 15px;
+
+    }
+
+
+    .img2 {
+
+        width: 110px;
+
+        top: 160px;
+
+        left: 110px;
+
+    }
+
+
+    /* ---------- справа ---------- */
+
+    .img3 {
+
+        width: 130px;
+
+        right: 130px;
+
+        bottom: 10px;
+
+    }
+
+
+    .img4 {
+
+        width: 150px;
+
+        right: 10px;
+
+        bottom: 10;
+
+    }
+
+
+    .img5 {
+
+        width: 200px;
+
+        right: 360px;
+
+        bottom: 10px;
+
+    }
+
+
+    /* ---------- солнце ---------- */
+
+    /* ---------- солнце ---------- */
+
+.sun {
+
+    width: 80px;
+
+    top: 230px;
+
+}
+
+
+/* ---------- будда ---------- */
+
+.buddha {
+
+    width: 100px;
+
+    top: 500px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+}
+
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+    <img class="buddha" src="images/buddha.png"> 
+    <img class="sun" src="images/sun.png">
+
+
+    <img class="top-left img1" src="images/text.jpg">
+    <img class="top-left img2" src="images/pink-buddha.png">
+    
+    <img class="bottom-right img3" src="images/girl.jpg">
+    <img class="bottom-right img4" src="images/2flower.jpg">
+    <img class="bottom-right img5" src="images/green-pink-2.jpg">
+    
+    
+
+
+<div class="container">
+
+    <h1 id="title">
+        VIBES
+    </h1>
+
+
+
+    <div class="message" id="message">
+        улыбочку!
+    </div>
+
+
+    <div class="hint" id="hint">
+        тык сюда
+    </div>
+
+    <div class="final-message" id="finalMessage">
+    и пусть твой день будет прекрасным :) 
+    </div>
+
+</div>
+
+
+<script>
+
+
+const title = document.getElementById("title");
+const message = document.getElementById("message");
+const hint = document.getElementById("hint");
+const finalMessage = document.getElementById("finalMessage");
+
+
+let step = 1;
+
+
+
+hint.addEventListener("click", () => {
+
+    if (step === 1) {
+
+        message.classList.add("show");
+
+        hint.innerHTML = "тык ещё раз";
+
+        step = 2;
+
+    } 
+    
+    else if (step === 2) {
+
+        createEmojis();
+
+        hint.innerHTML = "";
+
+
+        setTimeout(() => {
+
+            finalMessage.classList.add("show");
+
+        }, 800);
+
+
+        step = 3;
+
+    }
+
+});
+
+
+
+
+
+
+
+function createEmojis() {
+
+
+    const emojis = [
+        "💕",
+        "✨",
+        "😊",
+        "🪬",
+        "🍃",
+        "💛"
+    ];
+
+
+    for (let i = 0; i < 25; i++) {
+
+
+        const emoji = document.createElement("div");
+
+
+        emoji.className = "emoji";
+
+
+        emoji.innerHTML =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+
+
+        emoji.style.left = "50%";
+        emoji.style.top = "50%";
+
+
+
+        emoji.style.setProperty(
+            "--x",
+            `${(Math.random()-0.5)*600}px`
+        );
+
+
+        emoji.style.setProperty(
+            "--y",
+            `${(Math.random()-0.5)*600}px`
+        );
+
+
+
+        document.body.appendChild(emoji);
+
+
+
+        setTimeout(() => {
+
+            emoji.remove();
+
+        },2000);
+
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+</html>
