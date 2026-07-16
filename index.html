@@ -1,407 +1,405 @@
-<!-- MY FIRST PET PROJECT ✨
+<!-- 
+    MY FIRST PET PROJECT ✨
 
-Название:
-Have a nice day
+    Название: Have a nice day
 
-Что умеет сайт:
-1. Показывает заголовок
-2. По первому клику открывает сообщение
-3. По второму клику запускает анимацию
-4. Показывает финальное пожелание
-5. Адаптирован под мобильные устройства
+    Что умеет сайт:
+    1. Показывает заголовок
+    2. По первому клику открывает сообщение
+    3. По второму клику запускает анимацию
+    4. Показывает финальное пожелание
+    5. Адаптирован под мобильные устройства
 
-Автор:
-Lera Bbbel -->
+    Автор: Lera Bbbel
+-->
 
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-<!-- Подключение шрифтов Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Space+Grotesk:wght@500;700&family=Cormorant+Garamond:wght@700&family=Manrope:wght@400;500;700&family=Comfortaa:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- Настройки страницы -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<title>have a nice day</title>
-    
-<style>
+    <!-- ШРИФТЫ: Используются только 2 шрифта: Inter (основной текст) и
+     Space Grotesk (заголовок, подсказка) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-/* Базовые настройки страницы */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-}
+    <!-- НАСТРОЙКИ СТРАНИЦЫ  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>have a nice day</title>
 
-/* Основные стили  страницы */
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #8E8A41;
-    color: #FDDAD4;
-    font-family: "Inter", sans-serif;
-    overflow-x: hidden;
-}
+    <style>
 
+        /* 1. БАЗОВЫЕ НАСТРОЙКИ */
 
-/* Центральный контейнер */
-.container {
-    text-align: center;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #8E8A41;
+            color: #FDDAD4;
+            font-family: "Inter", sans-serif;
+
+            overflow-x: hidden;
+        }
 
 
-/* Заголовок */
-h1 {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 100px;
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    cursor: pointer;
-    animation: appear 1s ease;
-}
+        /* 2. ОСНОВНОЙ БЛОК С ТЕКСТОМ (заголовок, сообщения, подсказка) */
 
-/* Всплывающие сообщения */
-.message {
-    font-family: "Space Grotesk", sans-serif;
-    margin-top: 20px;
-    font-size: 1.5rem;
-    cursor: default;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
-    
-.message.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-    
-.hint {
-    font-family: "Space Grotesk", sans-serif;    
-    margin-top: 0px;
-    font-size: 15px;
-    opacity: 0.5;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
+        .container {
+            position: relative;
+            z-index: 20; /* чтобы декоративные картинки никогда не перекрывали клики */
+            text-align: center;
+        }
 
-.hint:hover {
-    opacity: 1;
-}
+        h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 100px;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            cursor: pointer;
+            animation: appear 1s ease;
+        }
 
-    
-.final-message {
-    font-family: "Inter", sans-serif;
-    margin-top: 10px;
-    font-size: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 1s ease;
-}
+        /* Текст, который появляется после первого клика */
+        .message {
+            font-family: "Space Grotesk", sans-serif;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            cursor: default;
 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
 
-.final-message.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
+        /* Подсказка "тык сюда" / "тык ещё раз" */
+        .hint {
+            font-family: "Space Grotesk", sans-serif;
+            margin-top: 0px;
+            font-size: 15px;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
 
+        .hint:hover {
+            opacity: 1;
+        }
 
-/* Эмодзи */
-.emoji {
-    position: absolute;
-    font-size: 50px;
-    animation: fly 2s ease-out forwards;
-    pointer-events: none;
-}
+        /* Финальный текст */
+        .final-message {
+            font-family: "Inter", sans-serif;
+            margin-top: 10px;
+            font-size: 1.5rem;
 
-/* Анимации Эмодзм */
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 1s ease;
+        }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .final-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-@keyframes fly {
-    from {
-        opacity: 1;
-        transform: translate(0,0) scale(1);
-    }
+        /* 3. АНИМАЦИИ */
 
-    to {
-        opacity: 0;
-        transform: translate(var(--x),var(--y)) scale(2);
-    }
-}
+        /* Плавное появление заголовка при загрузке страницы */
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
+        /* Разлёт emoji после второго клика */
+        @keyframes fly {
+            from {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translate(var(--x), var(--y)) scale(2);
+            }
+        }
 
-/* Картинки */
-.sun {
-    position: absolute;
-    width: 100px;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-}
+        .emoji {
+            position: absolute;
+            font-size: 50px;
+            animation: fly 2s ease-out forwards;
+            pointer-events: none;
+        }
 
-.buddha {
-    position: absolute;
-    width: 100px;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-}
+        /* 4. ФОНОВЫЕ / ДЕКОРАТИВНЫЕ КАРТИНКИ */
 
+        .sun {
+            position: absolute;
+            width: 100px;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
 
-/* Картинки слева*/
-.top-left {
-    position: absolute;
-}
+        .buddha {
+            position: absolute;
+            width: 100px;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
 
-.img1 {
-    width: 200px;
-    top: 40px;
-    left: 40px;
-}
+        /* Картинки в левом верхнем углу */
+        .top-left {
+            position: absolute;
+            pointer-events: none;
+        }
 
-.img2 {
-    width: 150px;
+        .img1 { /* первая картинка */
+            width: 200px;
+            top: 40px;
+            left: 40px;
+        }
 
-    top: 220px;
-    left: 170px;
-}
+        .img2 { /* вторая картинка */
+            width: 150px;
+            top: 220px;
+            left: 170px;
+        }
 
+        /* Картинки в правом нижнем углу */
+        .bottom-right {
+            position: absolute;
+            pointer-events: none;
+        }
 
-/* Картинки справа*/
-.bottom-right {
-    position: absolute;
-}
+        .img3 { /* третья картинка */
+            width: 150px;
+            bottom: 350px;
+            right: 10px;
+            z-index: 3;
+        }
 
-.img3 {
-    width: 150px;
-    bottom: 350px;
-    right: 10px;
-     z-index: 3;
-}
+        .img4 { /* четвёртая картинка */
+            width: 250px;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1;
+        }
 
-.img4 {
-    width: 250px;
-    bottom: 10px;
-    right: 10px;
-     z-index: 1;
-}
+        .img5 { /* пятая картинка */
+            width: 200px;
+            bottom: 10px;
+            right: 100px;
+            z-index: 3;
+        }
 
-.img5 {
-    width: 200px;
-    bottom: 10px;
-    right: 100px;
-     z-index: 3;
-}
+        /* 5. АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА */
 
+        @media (max-width: 768px) {
 
-/* Мобильная версия */
-@media (max-width: 768px) {
-    body {
-        display: block;
-        min-height: auto;
-        padding: 60px 0 250px;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
+            body {
+                display: block;
+                min-height: auto;
+                padding: 60px 0 250px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
 
-    .container {
-        position: relative;
-        z-index: 10;
-        width: 90%;
-        margin: 0 auto;
-        padding-top: 260px;
-    }
+            .container {
+                position: relative;
+                z-index: 10;
+                width: 90%;
+                margin: 0 auto;
+                padding-top: 260px;
+            }
 
-    h1 {
-        font-size: 58px;
-        line-height: 1;
-    }
+            h1 {
+                font-size: 58px;
+                line-height: 1;
+            }
 
-    .message {
-        font-size: 22px;
-        margin-top: 15px;
-    }
+            .message {
+                font-size: 22px;
+                margin-top: 15px;
+            }
 
-    .hint {
-        font-size: 16px;
-        margin-top: 8px;
-    }
+            .hint {
+                font-size: 16px;
+                margin-top: 8px;
+            }
 
-    .final-message {
-        font-size: 22px;
-    }
+            .final-message {
+                font-size: 22px;
+            }
 
-    .img1 {
-        width: 140px;
-        top: 20px;
-        left: 15px;
-    }
+            /* ---------- левый верх ---------- */
+            .img1 {
+                width: 140px;
+                top: 20px;
+                left: 15px;
+            }
 
-    .img2 {
-        width: 100px;
-        top: 150px;
-        left: 90px;
-    }
+            .img2 {
+                width: 100px;
+                top: 150px;
+                left: 90px;
+            }
 
-    .img3 {
-        width: 100px;
-        right: 5px;
-        bottom: 170px;
-    }
+            /* ---------- справа ---------- */
+            .img3 {
+                width: 100px;
+                right: 5px;
+                bottom: 170px;
+            }
 
-    .img4 {
-        width: 130px;
-        right: 10px;
-        bottom: 10px;
-    }
+            .img4 {
+                width: 130px;
+                right: 10px;
+                bottom: 10px;
+            }
 
-    .img5 {
-        width: 130px;
-        right: 90px;
-        bottom: 5px;
-    }
-    
-    .sun {
-    width: 80px;
-    top: 230px;
-    }
-    
-    .buddha {
-    width: 100px;
-    top: 500px;
-    left: 50%;
-    transform: translateX(-50%);
-    }
-}
+            .img5 {
+                width: 130px;
+                right: 90px;
+                bottom: 5px;
+            }
 
-</style>
+            /* ---------- солнце и будда ---------- */
+            .sun {
+                width: 80px;
+                top: 230px;
+            }
+
+            .buddha {
+                width: 100px;
+                top: 500px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+    </style>
 </head>
-
 
 
 <body>
 
-<!-- Центральные картинки -->
-    <img class="buddha" src="images/buddha.png"> 
+    <!-- HTML: КАРТИНКИ -->
+    <img class="buddha" src="images/buddha.png">
     <img class="sun" src="images/sun.png">
 
-<!-- Картинки слева -->
     <img class="top-left img1" src="images/text.jpg">
     <img class="top-left img2" src="images/pink-buddha.png">
 
-<!-- Картинки справа -->
     <img class="bottom-right img3" src="images/girl.jpg">
     <img class="bottom-right img4" src="images/2flower.jpg">
     <img class="bottom-right img5" src="images/green-pink-2.jpg">
-    
-<!-- Основной контент -->
-<div class="container">
-
-    <h1 id="title">
-        VIBES
-    </h1>
 
 
-    <div class="message" id="message">
-        улыбочку!
+    <!-- HTML: ОСНОВНОЙ ТЕКСТОВЫЙ БЛОК -->
+    <div class="container">
+
+        <h1 id="title">
+            VIBES
+        </h1>
+
+        <div class="message" id="message">
+            улыбочку!
+        </div>
+
+        <div class="hint" id="hint">
+            тык сюда
+        </div>
+
+        <div class="final-message" id="finalMessage">
+            и пусть твой день будет прекрасным :)
+        </div>
+
     </div>
 
 
-    <div class="hint" id="hint">
-        тык сюда
-    </div>
+    <!-- JS: ЛОГИКА СЦЕНАРИЯ 
+         step 1 -> клик показывает .message, меняет текст подсказки
+         step 2 -> клик запускает emoji-анимацию и финальное пожелание
+         step 3 -> сценарий завершён, дальнейшие клики ничего не делают -->
+    <script>
 
+        const title = document.getElementById("title");
+        const message = document.getElementById("message");
+        const hint = document.getElementById("hint");
+        const finalMessage = document.getElementById("finalMessage");
 
-    <div class="final-message" id="finalMessage">
-    и пусть твой день будет прекрасным :) 
-    </div>
+        let step = 1;
 
-</div>
+        hint.addEventListener("click", () => {
 
+            if (step === 1) {
+                message.classList.add("show");
+                hint.innerHTML = "тык ещё раз";
+                step = 2;
 
-<script>
-/* Получаем HTML-элементы */
-const message = document.getElementById("message");
-const hint = document.getElementById("hint");
-const finalMessage = document.getElementById("finalMessage");
+            } else if (step === 2) {
+                createEmojis();
+                hint.innerHTML = "";
 
-/* Первый шаг анимации */
-let step = 1;
+                setTimeout(() => {
+                    finalMessage.classList.add("show");
+                }, 800);
 
-/* Обработка нажатий */
-hint.addEventListener("click", () => {
-    if (step === 1) {
-        message.classList.add("show");
-        hint.innerHTML = "тык ещё раз";
-        step = 2;
-    } 
-    
-    else if (step === 2) {
-        createEmojis();
-        hint.innerHTML = "";
-        setTimeout(() => {
-            finalMessage.classList.add("show");
-        }, 800);
+                step = 3;
+            }
 
-        step = 3;
-    }
-});
+        });
 
+        // Создаёт 25 разлетающихся emoji из центра экрана
+        function createEmojis() {
 
-/* Летающие эмодзи */
-function createEmojis() {
-    const emojis = [
-        "💕",
-        "✨",
-        "😊",
-        "🪬",
-        "🍃",
-        "💛"
-    ];
+            const emojis = ["💕", "✨", "😊", "🪬", "🍃", "💛"];
 
-    for (let i = 0; i < 25; i++) {
-        const emoji = document.createElement("div");
-        emoji.className = "emoji";
-        emoji.innerHTML =
-        emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.left = "50%";
-        emoji.style.top = "50%";
-        emoji.style.setProperty(
-            "--x",
-            `${(Math.random()-0.5)*600}px`
-        );
+            for (let i = 0; i < 25; i++) {
 
-        emoji.style.setProperty(
-            "--y",
-            `${(Math.random()-0.5)*600}px`
-        );
+                const emoji = document.createElement("div");
+                emoji.className = "emoji";
+                emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
-        document.body.appendChild(emoji);
+                emoji.style.left = "50%";
+                emoji.style.top = "50%";
 
-        setTimeout(() => {
-            emoji.remove();
-        },2000);
-    }
-}
+                // случайная точка "приземления" для каждого emoji
+                emoji.style.setProperty("--x", `${(Math.random() - 0.5) * 600}px`);
+                emoji.style.setProperty("--y", `${(Math.random() - 0.5) * 600}px`);
 
-</script>
+                document.body.appendChild(emoji);
+
+                // удаляем emoji из DOM после окончания анимации
+                setTimeout(() => {
+                    emoji.remove();
+                }, 2000);
+            }
+        }
+
+    </script>
 
 </body>
 </html>
